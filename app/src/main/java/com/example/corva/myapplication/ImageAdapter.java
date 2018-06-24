@@ -17,6 +17,11 @@ public class ImageAdapter extends VerticalSwipeView.Adapter {
                 .into( ((ImageView) view));
     }
 
+    @Override
+    public void onBindEmptyView(View view) {
+
+    }
+
 
     @Override
     public int getItemCount() {

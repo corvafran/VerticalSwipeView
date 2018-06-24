@@ -109,8 +109,12 @@ public class VerticalSwipeView extends LinearLayout{
                 adapter.onBindView(getChildAt(0), 0);
                 firstCharge = false;
             }
-            if (adapter.getItemCount() > 1 && currentPosition < adapter.getItemCount() - 1) {
-                adapter.onBindView(getChildAt(1), currentPosition + 1);
+            if (adapter.getItemCount() > 1) {
+                if (currentPosition < adapter.getItemCount() - 1) {
+                    adapter.onBindView(getChildAt(1), currentPosition + 1);
+                } else {
+                    adapter.onBindEmptyView(getChildAt(0));
+                }
             }
         }
     }
@@ -225,6 +229,8 @@ public class VerticalSwipeView extends LinearLayout{
     public static abstract class Adapter{
 
         public abstract void onBindView(View view, int position);
+
+        public abstract void onBindEmptyView(View view);
 
         public abstract int getItemCount();
 
